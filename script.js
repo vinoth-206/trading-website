@@ -11,17 +11,3 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
   },{threshold:.12,rootMargin:'0px 0px -24px 0px'});
   revealItems.forEach(item=>{item.classList.add('scroll-fade');revealObserver.observe(item)});
 }
-const marketLoader = document.getElementById("marketLoader");
-
-if (marketLoader) {
-  const hideLoader = () => {
-    marketLoader.classList.add("is-done");
-    document.body.classList.remove("loading");
-  };
-
-  // Keep the intro brief, and hide it even if a resource loads slowly.
-  window.addEventListener("load", () => setTimeout(hideLoader, 700), {
-    once: true
-  });
-  setTimeout(hideLoader, 4500);
-}
