@@ -28,4 +28,104 @@
   .has-scroll-fade .scroll-fade{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
   .has-scroll-fade .scroll-fade.is-visible{opacity:1;transform:translateY(0)}
 }
+.market-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: #101c2b;
+  color: #fff;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+
+.market-loader.is-done {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-card {
+  width: min(420px, calc(100% - 40px));
+  text-align: center;
+}
+
+.loader-logo {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 26px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #c79a55;
+  color: #c79a55;
+  font: 30px Georgia, serif;
+  transform: rotate(45deg);
+}
+
+.loader-label {
+  color: #c79a55;
+  font: 700 10px/1.4 "DM Sans", sans-serif;
+  letter-spacing: .2em;
+}
+
+.loader-card h1 {
+  margin: 14px 0 8px;
+  font: 42px/1.15 Georgia, serif;
+}
+
+.loader-card h1 span {
+  color: #c79a55;
+}
+
+.loader-caption,
+.loader-status {
+  color: #aeb9c3;
+  font: 13px "DM Sans", sans-serif;
+}
+
+.market-chart {
+  height: 96px;
+  margin: 35px auto 24px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 10px;
+}
+
+.market-chart i {
+  width: 14px;
+  height: var(--bar);
+  background: linear-gradient(#dfbd86, #a77b42);
+  transform-origin: bottom;
+  animation: market-rise .9s var(--delay) ease-in-out infinite alternate;
+}
+
+.loader-track {
+  height: 2px;
+  overflow: hidden;
+  background: #ffffff25;
+}
+
+.loader-track span {
+  display: block;
+  width: 35%;
+  height: 100%;
+  background: #c79a55;
+  animation: loader-progress 1.2s ease-in-out infinite;
+}
+
+@keyframes market-rise {
+  to { transform: scaleY(.72); opacity: .65; }
+}
+
+@keyframes loader-progress {
+  from { transform: translateX(-110%); }
+  to { transform: translateX(310%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .market-chart i,
+  .loader-track span {
+    animation: none;
+  }
+}
 
